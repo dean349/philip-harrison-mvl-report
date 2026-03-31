@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MVL Report — Los Romeros Limited | Philip Harrison</title>
+<meta name="description" content="Comprehensive Members' Voluntary Liquidation research report for Philip Harrison and Los Romeros Limited following the €315,000 Lanzarote villa sale.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+  :root {
+    --navy: #0f1c2e;
+    --navy2: #162035;
+    --gold: #c9a84c;
+    --gold2: #e8c97a;
+    --teal: #1a8a8a;
+    --red: #c0392b;
+    --orange: #e67e22;
+    --green: #27ae60;
+    --text: #e8eaf0;
+    --muted: #8a9ab5;
+    --card: #1a2540;
+    --border: #2a3a5c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--text); line-height: 1.7; }
+  a { color: var(--gold2); }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #0a1220 0%, #162035 50%, #1a2a45 100%); padding: 60px 20px 50px; text-align: center; border-bottom: 2px solid var(--gold); }
+  .hero .badge { display: inline-block; background: rgba(201,168,76,0.15); border: 1px solid var(--gold); color: var(--gold2); padding: 6px 18px; border-radius: 20px; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 5vw, 3rem); color: #fff; margin-bottom: 12px; }
+  .hero .subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 30px; max-width: 620px; margin-left: auto; margin-right: auto; }
+  .hero-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+  .meta-pill { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px 20px; font-size: 0.82rem; }
+  .meta-pill span { display: block; color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+
+  /* LAYOUT */
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+  /* ALERT BOXES */
+  .alert { border-radius: 12px; padding: 18px 22px; margin: 24px 0; border-left: 4px solid; }
+  .alert-critical { background: rgba(192,57,43,0.12); border-color: var(--red); }
+  .alert-warning  { background: rgba(230,126,34,0.12); border-color: var(--orange); }
+  .alert-info     { background: rgba(26,138,138,0.12); border-color: var(--teal); }
+  .alert-success  { background: rgba(39,174,96,0.12); border-color: var(--green); }
+  .alert-title { font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .alert-critical .alert-title { color: var(--red); }
+  .alert-warning  .alert-title { color: var(--orange); }
+  .alert-info     .alert-title { color: var(--teal); }
+  .alert-success  .alert-title { color: var(--green); }
+
+  /* SECTIONS */
+  .section { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 28px; }
+  .section-number { display: inline-block; background: var(--gold); color: var(--navy); font-weight: 700; font-size: 0.75rem; padding: 3px 10px; border-radius: 6px; margin-bottom: 10px; }
+  .section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+  .section h3 { font-size: 1rem; color: var(--gold2); font-weight: 600; margin: 20px 0 10px; }
+
+  /* TABLES */
+  .tbl-wrap { overflow-x: auto; margin: 16px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th { background: rgba(201,168,76,0.15); color: var(--gold2); font-weight: 600; padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* STAGES */
+  .stage-grid { display: grid; gap: 16px; }
+  .stage { background: var(--navy); border: 1px solid var(--border); border-radius: 12px; padding: 20px; position: relative; padding-left: 28px; }
+  .stage::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 12px 0 0 12px; background: var(--gold); }
+  .stage.critical::before { background: var(--red); }
+  .stage.urgent::before { background: var(--orange); }
+  .stage.done::before { background: var(--green); }
+  .stage-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
+  .stage h4 { font-size: 1rem; color: #fff; font-weight: 600; margin-bottom: 8px; }
+  .stage p, .stage ul { font-size: 0.88rem; color: #c0cce0; }
+  .stage ul { padding-left: 18px; }
+  .stage ul li { margin-bottom: 4px; }
+
+  /* RISK PILLS */
+  .risk-critical { color: #e74c3c; font-weight: 700; }
+  .risk-high     { color: var(--orange); font-weight: 700; }
+  .risk-medium   { color: #f1c40f; font-weight: 600; }
+  .risk-low      { color: var(--green); }
+
+  /* TAX COMPARISON */
+  .tax-compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0; }
+  .tax-card { background: var(--navy); border-radius: 12px; padding: 20px; text-align: center; border: 1px solid var(--border); }
+  .tax-card.highlight { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+  .tax-card.danger { border-color: var(--red); background: rgba(192,57,43,0.08); }
+  .tax-card .rate { font-size: 2rem; font-weight: 700; margin: 8px 0; }
+  .tax-card .label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .tax-card .method { font-size: 0.85rem; color: #fff; font-weight: 600; margin-bottom: 6px; }
+  .tax-card .bill { font-size: 0.82rem; color: var(--muted); }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 30px; }
+  .timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .tl-item { position: relative; margin-bottom: 20px; }
+  .tl-dot { position: absolute; left: -25px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); border: 2px solid var(--navy); }
+  .tl-dot.done { background: var(--green); }
+  .tl-dot.urgent { background: var(--red); }
+  .tl-date { font-size: 0.75rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+  .tl-title { font-size: 0.95rem; color: #fff; font-weight: 600; }
+  .tl-desc { font-size: 0.83rem; color: var(--muted); margin-top: 2px; }
+
+  /* ACTION LIST */
+  .action-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); align-items: flex-start; }
+  .action-item:last-child { border-bottom: none; }
+  .action-num { flex-shrink: 0; width: 28px; height: 28px; background: rgba(201,168,76,0.15); border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: var(--gold); }
+  .action-text { font-size: 0.88rem; color: #c0cce0; }
+  .action-text strong { color: #fff; }
+
+  /* FOOTER */
+  footer { background: #080e18; border-top: 1px solid var(--border); padding: 30px 20px; text-align: center; color: var(--muted); font-size: 0.8rem; }
+  footer .disclaimer { max-width: 700px; margin: 0 auto; line-height: 1.6; }
+  footer .source-tag { display: inline-block; background: rgba(201,168,76,0.1); border: 1px solid var(--gold); color: var(--gold); padding: 4px 12px; border-radius: 10px; font-size: 0.72rem; margin: 4px; }
+
+  @media (max-width: 600px) {
+    .section { padding: 20px; }
+    .hero { padding: 40px 16px 36px; }
+    .tax-compare { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Private &amp; Confidential</div>
+  <h1>Members' Voluntary Liquidation<br>Research Report</h1>
+  <p class="subtitle">A comprehensive dual-AI synthesis for <strong>Philip Anthony Harrison</strong> and <strong>Los Romeros Limited</strong> (Company No. 06993349)</p>
+  <div class="hero-meta">
+    <div class="meta-pill"><span>Sale Price</span>€315,000 — Verified</div>
+    <div class="meta-pill"><span>Sale Completed</span>20 March 2026</div>
+    <div class="meta-pill"><span>Report Date</span>31 March 2026</div>
+    <div class="meta-pill"><span>Research Sources</span>Gemini Pro 3.1 + Claude Sonnet 4.6</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="section">
+    <div class="section-number">Executive Summary</div>
+    <h2>Why an MVL Is the Only Path Forward</h2>
+    <p>Following the €315,000 sale of the Lanzarote villa (completed 20 March 2026) and repatriation of funds to the UK, <strong>Los Romeros Limited</strong> is now a cash-rich, solvent shell company. The funds belong to the <em>company</em> — not to Philip personally. Every pound withdrawn other than through a formal <strong>Members' Voluntary Liquidation (MVL)</strong> will trigger punitive tax at up to 39.35% or criminal liability.</p>
+
+    <div class="alert alert-critical" style="margin-top:20px;">
+      <div class="alert-title">🚨 Critical Warning</div>
+      Do NOT make any personal withdrawal from the Los Romeros bank account before the MVL is complete. Any informal payment will be treated by HMRC as a Director's Loan (S455 charge — 33.75%) or informal dividend (up to 39.35% Income Tax).
+    </div>
+
+    <h3>The Tax Differential — Why This Matters</h3>
+    <div class="tax-compare">
+      <div class="tax-card danger">
+        <div class="method">Informal Dividend</div>
+        <div class="rate" style="color:var(--red)">39.35%</div>
+        <div class="label">Additional Rate</div>
+        <div class="bill">~£102,000 tax bill</div>
+      </div>
+      <div class="tax-card danger">
+        <div class="method">Director's Loan</div>
+        <div class="rate" style="color:var(--red)">33.75%</div>
+        <div class="label">S455 Charge</div>
+        <div class="bill">>£100,000 + penalties</div>
+      </div>
+      <div class="tax-card danger">
+        <div class="method">DS01 Strike-Off</div>
+        <div class="rate" style="color:#888">100%</div>
+        <div class="label">Bona Vacantia</div>
+        <div class="bill">Crown takes ALL assets</div>
+      </div>
+      <div class="tax-card highlight">
+        <div class="method">✅ MVL Distribution</div>
+        <div class="rate" style="color:var(--gold)">18–24%</div>
+        <div class="label">Capital Gains Tax</div>
+        <div class="bill">~£47,000–£62,000 tax bill</div>
+      </div>
+    </div>
+    <p style="color:var(--muted);font-size:0.85rem;">Estimated saving vs. informal dividend: <strong style="color:var(--gold)">over £50,000</strong>.</p>
+  </div>
+
+  <!-- WHAT IS AN MVL -->
+  <div class="section">
+    <div class="section-number">Section 1</div>
+    <h2>What Is a Members' Voluntary Liquidation (MVL)?</h2>
+    <p>An MVL is the legally correct mechanism for winding up a <strong>solvent</strong> UK limited company and distributing its remaining assets to shareholders. It is governed by the <em>Insolvency Act 1986</em> and must be administered by a <strong>licensed Insolvency Practitioner (IP)</strong>.</p>
+
+    <h3>Key Requirements</h3>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Requirement</th><th>Detail</th></tr>
+        <tr><td>Company must be solvent</td><td>All debts must be payable in full within 12 months</td></tr>
+        <tr><td>Shareholder vote</td><td>Special Resolution — 75% majority by value of shares</td></tr>
+        <tr><td>Licensed IP required</td><td>Must be regulated by ICAEW, IPA, or ICAS</td></tr>
+        <tr><td>Gazette advertisement</td><td>Published within 14 days of winding-up resolution</td></tr>
+        <tr><td>HMRC clearance</td><td>Required before final distribution to shareholders</td></tr>
+      </table>
+    </div>
+
+    <div class="alert alert-info">
+      <div class="alert-title">ℹ️ What Is an IP?</div>
+      An <strong>Insolvency Practitioner (IP)</strong> is a licensed professional authorised to legally wind up a company. Once appointed, Philip's powers as director cease and the IP takes full administrative control. They settle all creditors, obtain HMRC clearance, and distribute the net cash to Philip as a formal capital payment. Find one at: <a href="https://www.gov.uk/find-an-insolvency-practitioner">gov.uk/find-an-insolvency-practitioner</a>
+    </div>
+  </div>
+
+  <!-- TAX ANALYSIS -->
+  <div class="section">
+    <div class="section-number">Section 2</div>
+    <h2>Tax Rates &amp; Key Reliefs (2025/26)</h2>
+
+    <h3>Capital Gains Tax Rates</h3>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Rate</th><th>When It Applies</th></tr>
+        <tr><td><strong>18%</strong></td><td>Basic rate taxpayer (gains + income below ~£50,270)</td></tr>
+        <tr><td><strong>24%</strong></td><td>Higher/additional rate taxpayer</td></tr>
+        <tr><td>£3,000</td><td>Annual CGT exempt amount — Philip can apply this once</td></tr>
+      </table>
+    </div>
+
+    <h3>Business Asset Disposal Relief (BADR) — Does It Apply?</h3>
+    <div class="alert alert-warning">
+      <div class="alert-title">⚠️ BADR Almost Certainly Does NOT Apply</div>
+      BADR reduces CGT to 14% (rising to 18% from April 2026) but requires the company to be a <strong>trading company</strong>. Los Romeros Limited was a <strong>passive property-holding SPV</strong> — its only asset was a Spanish villa. It had no trading income, no genuine economic activity, and its SIC code (70229) was a generic placeholder applied by Wincham. It almost certainly fails the HMRC trading company test. Standard 18%/24% CGT rates will apply. <strong>Philip's CTA must confirm this.</strong>
+    </div>
+
+    <h3>TAAR Anti-Avoidance Rule — Does It Apply?</h3>
+    <div class="alert alert-success">
+      <div class="alert-title">✅ TAAR Does NOT Apply to Philip Harrison</div>
+      The Targeted Anti-Avoidance Rule (s.396B ITTOIA 2005) targets "phoenix" businesses — where someone liquidates a company then continues the same trade. Philip is retired. Los Romeros had no trade. He will not reconstitute any similar business. The TAAR conditions C and D both fail. The MVL distribution will be treated as capital — not income.
+    </div>
+  </div>
+
+  <!-- CROSS-BORDER TAX -->
+  <div class="section">
+    <div class="section-number">Section 3</div>
+    <h2>Cross-Border Tax: Spain + UK</h2>
+
+    <h3>Spanish AEAT Obligations</h3>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Obligation</th><th>Detail</th><th>Status</th></tr>
+        <tr><td>Modelo 211 (3% retention)</td><td>€9,450 withheld by buyer's notary</td><td>✅ Should be done at completion</td></tr>
+        <tr><td><strong>Modelo 210 (Final CGT)</strong></td><td>Non-resident CGT return — file within 4 months of sale</td><td><span class="risk-critical">⚠️ Deadline ~20 July 2026</span></td></tr>
+        <tr><td>Plusvalía Municipal</td><td>Local land increment tax — Tías Ayuntamiento</td><td>Should be settled at completion</td></tr>
+      </table>
+    </div>
+
+    <h3>Estimated Spanish CGT Calculation</h3>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Item</th><th>Amount</th></tr>
+        <tr><td>Gross disposal price</td><td>€315,000</td></tr>
+        <tr><td>Less: Acquisition cost + purchase expenses (2019)</td><td>TBC by gestoria</td></tr>
+        <tr><td>Less: Capital improvements + sale costs</td><td>TBC by gestoria</td></tr>
+        <tr><td>Estimated taxable gain</td><td>~€93,100</td></tr>
+        <tr><td>Spanish CGT @ 19%</td><td>~€17,689</td></tr>
+        <tr><td>Less: 3% retention already paid</td><td>(€9,450)</td></tr>
+        <tr><td><strong>Estimated balance due to AEAT</strong></td><td><strong>~€8,239</strong></td></tr>
+      </table>
+    </div>
+
+    <h3>Foreign Tax Credit Relief (FTCR) — Avoiding Double Taxation</h3>
+    <p>As a UK-registered company, Los Romeros must also declare the disposal for UK Corporation Tax. Under the UK-Spain Double Taxation Agreement, the Spanish tax paid can be claimed as a credit (FTCR) against the UK CT liability — preventing the same gain being taxed twice. A specialist UK-Spain cross-border CTA must handle this. If FTCR is not correctly applied, Philip could pay tax twice on the same gain.</p>
+
+    <div class="alert alert-warning">
+      <div class="alert-title">⚠️ Phantom FX Currency Gains</div>
+      All UK gains must be calculated in <strong>GBP</strong> at historical Bank of England EUR/GBP spot rates. If the Euro strengthened against the Pound between 2019 (acquisition) and March 2026 (disposal), a "phantom gain" may exist in Sterling — even if no additional value was created in Euros. This is fully taxable and must be calculated by the CTA.
+    </div>
+  </div>
+
+  <!-- 7-STAGE PROCESS -->
+  <div class="section">
+    <div class="section-number">Section 4</div>
+    <h2>The Complete MVL Process — 7 Stages</h2>
+
+    <div class="stage-grid">
+      <div class="stage critical">
+        <div class="stage-label">Immediate — This Week</div>
+        <h4>Stage 0: Pre-MVL Preparation</h4>
+        <ul>
+          <li>Revoke all Wincham/Adrem bank mandates in writing</li>
+          <li>Confirm Philip is the sole authorised signatory</li>
+          <li>Gather all financial documents (escrituras, purchase costs, invoices)</li>
+          <li>Do NOT make any personal withdrawals</li>
+        </ul>
+      </div>
+      <div class="stage urgent">
+        <div class="stage-label">Weeks 2–4 — April 2026</div>
+        <h4>Stage 1: Appoint IP and CTA</h4>
+        <ul>
+          <li>Select an independent licensed Insolvency Practitioner via gov.uk register</li>
+          <li>Appoint UK-Spain dual-qualified Chartered Tax Adviser</li>
+          <li>Do NOT accept recommendations from Wincham or Adrem</li>
+          <li>Expected IP cost: £1,500–£3,500 + VAT + disbursements</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <div class="stage-label">Weeks 3–5 — April/May 2026</div>
+        <h4>Stage 2: Declaration of Solvency &amp; Shareholder Resolution</h4>
+        <ul>
+          <li>Philip swears Statutory Declaration of Solvency before a solicitor</li>
+          <li>File <strong>Form LIQ01</strong> at Companies House</li>
+          <li>Pass Special Resolution (75%+ vote including Beryl Harrison) to wind up</li>
+          <li>File resolution at Companies House within 15 days</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <div class="stage-label">Weeks 4–6 — May 2026</div>
+        <h4>Stage 3: IP Takes Control &amp; Gazette Advertisement</h4>
+        <ul>
+          <li>Philip's director powers cease — IP takes full control</li>
+          <li>IP publishes winding-up notice in The London Gazette (within 14 days)</li>
+          <li>Creditor claim period runs (~21–28 days)</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <div class="stage-label">Weeks 4–16 — May/June 2026</div>
+        <h4>Stage 4: HMRC Tax Clearance</h4>
+        <ul>
+          <li>CTA prepares and files final CT600 with FTCR claim</li>
+          <li>IP applies to HMRC for clearance (30-day statutory response window)</li>
+          <li>All creditors settled: HMRC, Wincham exit fees, IP fees</li>
+        </ul>
+      </div>
+      <div class="stage">
+        <div class="stage-label">Weeks 12–20 — July/August 2026</div>
+        <h4>Stage 5/6: Capital Distribution to Philip</h4>
+        <ul>
+          <li>IP distributes net cash to Philip Harrison's personal UK bank account</li>
+          <li>Distribution classified as capital (not income) — CGT applies</li>
+          <li>Estimated net distribution: ~£240,000–£255,000 (illustrative)</li>
+        </ul>
+      </div>
+      <div class="stage done">
+        <div class="stage-label">Weeks 18–26 — Aug/Oct 2026</div>
+        <h4>Stage 7: Formal Dissolution</h4>
+        <ul>
+          <li>IP files final liquidation account at Companies House</li>
+          <li>Los Romeros Limited struck off — ceases to exist</li>
+          <li>Philip's SA108 CGT return due 31 January 2027</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section">
+    <div class="section-number">Section 5</div>
+    <h2>Master Timeline</h2>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">20 March 2026</div><div class="tl-title">Property Sale Completed ✅</div><div class="tl-desc">Escritura signed at Spanish notary — €315,000</div></div>
+      <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">~27 March 2026</div><div class="tl-title">Funds Enter UK Account ✅</div><div class="tl-desc">Proceeds repatriated to Los Romeros Limited bank account</div></div>
+      <div class="tl-item"><div class="tl-dot urgent"></div><div class="tl-date">This Week</div><div class="tl-title">Lock Bank Account 🔴</div><div class="tl-desc">Revoke all Wincham/Adrem mandates — Philip sole signatory</div></div>
+      <div class="tl-item"><div class="tl-dot urgent"></div><div class="tl-date">April 2026</div><div class="tl-title">Appoint IP + CTA + Spanish Gestoria 🔴</div><div class="tl-desc">Begin MVL — engage all professional advisers independently</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">April–May 2026</div><div class="tl-title">Declaration of Solvency &amp; Resolution</div><div class="tl-desc">LIQ01 sworn — Special Resolution passed and filed</div></div>
+      <div class="tl-item"><div class="tl-dot urgent"></div><div class="tl-date">~20 July 2026</div><div class="tl-title">⚠️ HARD DEADLINE: Modelo 210 Filed</div><div class="tl-desc">Spanish non-resident CGT return — missing this forfeits AEAT refund rights</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">July–September 2026</div><div class="tl-title">Final Capital Distribution</div><div class="tl-desc">IP distributes net proceeds to Philip Harrison personally</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">August–October 2026</div><div class="tl-title">Los Romeros Dissolved</div><div class="tl-desc">Company formally removed from Companies House register</div></div>
+      <div class="tl-item"><div class="tl-dot urgent"></div><div class="tl-date">31 January 2027</div><div class="tl-title">Philip's CGT Due to HMRC</div><div class="tl-desc">SA108 Capital Gains supplement filed — CGT payment made</div></div>
+    </div>
+  </div>
+
+  <!-- RISK REGISTER -->
+  <div class="section">
+    <div class="section-number">Section 6</div>
+    <h2>Risk Register</h2>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Risk</th><th>Severity</th><th>Action Required</th></tr>
+        <tr><td>Modelo 210 deadline missed (20 Jul 2026)</td><td><span class="risk-critical">🔴 Critical</span></td><td>Engage Spanish gestoria NOW</td></tr>
+        <tr><td>Funds withdrawn informally before MVL</td><td><span class="risk-critical">🔴 Critical</span></td><td>Zero exceptions — MVL route only</td></tr>
+        <tr><td>Wincham/Adrem residual bank access</td><td><span class="risk-critical">🔴 High</span></td><td>Revoke all mandates in writing immediately</td></tr>
+        <tr><td>DS01 strike-off used instead of MVL</td><td><span class="risk-critical">🔴 High</span></td><td>Refuse any DS01 advice — Bona Vacantia risk</td></tr>
+        <tr><td>FTCR not correctly calculated — double taxation</td><td><span class="risk-high">🟠 High</span></td><td>Appoint cross-border CTA urgently</td></tr>
+        <tr><td>Phantom FX gain unquantified</td><td><span class="risk-high">🟠 Medium-High</span></td><td>CTA to calculate using historical spot rates</td></tr>
+        <tr><td>Historic annual Modelo 210 returns not filed (2020–25)</td><td><span class="risk-high">🟠 Medium-High</span></td><td>Spanish gestoria AEAT compliance check</td></tr>
+        <tr><td>BADR incorrectly claimed</td><td><span class="risk-medium">🟡 Medium</span></td><td>CTA to confirm it does NOT apply</td></tr>
+        <tr><td>IP not independent of Wincham</td><td><span class="risk-medium">🟡 Medium</span></td><td>Self-instruct via Gov.UK register only</td></tr>
+        <tr><td>Beryl Harrison director removal — unauthorised</td><td><span class="risk-medium">🟡 Medium</span></td><td>Confirm intent — reinstate via AP01 if needed</td></tr>
+        <tr><td>UK IHT on repatriated funds</td><td><span class="risk-medium">🟡 Notable</span></td><td>Engage STEP-qualified Private Client Solicitor</td></tr>
+        <tr><td>TAAR anti-avoidance rule</td><td><span class="risk-low">🟢 Does Not Apply</span></td><td>Documented — Philip retired, no phoenix</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ACTION PLAN -->
+  <div class="section">
+    <div class="section-number">Section 7</div>
+    <h2>Immediate Action Plan</h2>
+
+    <h3>🔴 This Week</h3>
+    <div class="action-item"><div class="action-num">1</div><div class="action-text"><strong>Lock the bank account.</strong> Revoke all Wincham/Adrem mandates in writing. Philip is the sole authorised signatory. Instruct the bank in writing.</div></div>
+    <div class="action-item"><div class="action-num">2</div><div class="action-text"><strong>Do NOT make any personal withdrawals</strong> from the Los Romeros account under any circumstances.</div></div>
+    <div class="action-item"><div class="action-num">3</div><div class="action-text"><strong>Contact a Spanish gestoria</strong> to begin preparing the Modelo 210. Deadline is ~20 July 2026 — do not delay.</div></div>
+    <div class="action-item"><div class="action-num">4</div><div class="action-text"><strong>Gather all financial documents:</strong> 2019 escritura, purchase costs, improvement invoices, sale agency commission, notary receipts.</div></div>
+
+    <h3 style="margin-top:20px;">🟠 This Month (April 2026)</h3>
+    <div class="action-item"><div class="action-num">5</div><div class="action-text"><strong>Shortlist 3 independent IPs</strong> via the Gov.UK register (gov.uk/find-an-insolvency-practitioner) or R3 (r3.org.uk). Do not accept Wincham/Adrem recommendations.</div></div>
+    <div class="action-item"><div class="action-num">6</div><div class="action-text"><strong>Appoint a UK-Spain dual CTA</strong> specialist (Blevins Franks, Del Canto Chambers, or CIOT directory member).</div></div>
+    <div class="action-item"><div class="action-num">7</div><div class="action-text"><strong>Request full itemised fee statement</strong> from Adrem/Wincham — all charges from 2009 to present. Contest any unjustified exit fees.</div></div>
+    <div class="action-item"><div class="action-num">8</div><div class="action-text"><strong>Confirm Beryl Harrison's involvement</strong> — her agreement is needed for the shareholder Special Resolution. Confirm whether her director removal was intentional.</div></div>
+  </div>
+
+  <!-- ADVISER DIRECTORY -->
+  <div class="section">
+    <div class="section-number">Section 8</div>
+    <h2>Independent Adviser Directory</h2>
+    <div class="alert alert-critical">
+      <div class="alert-title">⛔ Critical Independence Requirement</div>
+      Every adviser must be completely independent of Wincham International, Adrem Accounting, and any entity at Greenfield Farm Trading Estate, Congleton, CW12.
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Role</th><th>Purpose</th><th>Find Them</th></tr>
+        <tr><td><strong>Licensed UK Insolvency Practitioner</strong></td><td>MVL execution — legally required</td><td><a href="https://www.gov.uk/find-an-insolvency-practitioner">gov.uk/find-an-insolvency-practitioner</a> · R3.org.uk</td></tr>
+        <tr><td><strong>UK-Spain Dual CTA</strong></td><td>Cross-border CGT, FTCR, CT600, phantom FX</td><td><a href="https://www.blevinsfranks.com">Blevins Franks</a> · <a href="https://delcantochambers.com">Del Canto Chambers</a> · tax.org.uk</td></tr>
+        <tr><td><strong>Spanish Gestoria (Lanzarote)</strong></td><td>Modelo 210 filing, AEAT compliance check</td><td>Colegio de Gestores de Las Palmas</td></tr>
+        <tr><td><strong>STEP Private Client Solicitor</strong></td><td>UK Will, IHT planning, trusts post-MVL</td><td><a href="https://www.step.org/find-a-member">step.org/find-a-member</a></td></tr>
+        <tr><td><strong>FX Specialist Broker</strong></td><td>EUR→GBP conversion optimisation</td><td>Currencies Direct · Moneycorp · OFX</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  <div style="margin-bottom:16px;">
+    <span class="source-tag">Gemini Pro 3.1 Research</span>
+    <span class="source-tag">Claude Sonnet 4.6 Research</span>
+    <span class="source-tag">GOV.UK Official Sources</span>
+    <span class="source-tag">HMRC Guidance</span>
+    <span class="source-tag">R3 / ICAEW / IPA</span>
+    <span class="source-tag">UK-Spain DTA</span>
+  </div>
+  <p class="disclaimer">
+    This report was produced 31 March 2026 by Antigravity AI through synthesis of research from both Google Gemini Pro 3.1 and Claude Sonnet 4.6. It is prepared for Philip Anthony Harrison and Los Romeros Limited (Company No. 06993349). The verified sale price of <strong>€315,000</strong> (20 March 2026) is the basis for all financial calculations.
+    <br><br>
+    <strong>This document does not constitute legal, tax, or financial advice.</strong> All decisions must be made in conjunction with independently appointed qualified UK professionals — Insolvency Practitioner (IP), Chartered Tax Adviser (CTA), and Private Client Solicitor.
+  </p>
+</footer>
+
+</body>
+</html>
